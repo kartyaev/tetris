@@ -43,23 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseClass.cs" />
-    <Compile Include="BlockClass.cs" />
-    <Compile Include="BlockTypeNum.cs" />
-    <Compile Include="CodeFile1.cs" />
-    <Compile Include="EventArgs.cs" />
-    <Compile Include="Point.cs" />
+    <Compile Include="ArrayHelper.cs" />
+    <Compile Include="Gues.cs" />
+    <Compile Include="InputValidator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RotationEnum.cs" />
-    <Compile Include="Sound.cs" />
-    <Compile Include="StructBlock.cs" />
-    <Compile Include="StructBlockStyle.cs" />
     <Compile Include="TerisClass.cs" />
-    <Compile Include="Tetris\Block.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tetris\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
