@@ -1,5 +1,7 @@
 ﻿using System;
 using Game;
+using System.Windows.Forms; // Добавлено пространство имен для Windows Forms
+
 using Исходник;
 
 namespace Tetris
@@ -30,9 +32,18 @@ namespace Tetris
                         RunArrayOperations();
                         break;
                     case 4:
-                        Playingtetris();
+                        ShowGuessingGameForm();
                         break;
                     case 5:
+                        ShowArrayForm();
+                        break;                 
+                    case 6:
+                        Playingtetris();
+                        break;
+                    case 7:
+                        ShowAuthorInfoForm();
+                        break;
+                    case 8:
                         exitProgram = ConfirmExit();
                         break;
                     default:
@@ -47,9 +58,27 @@ namespace Tetris
         /// </summary>
         private static void Playingtetris()
         {
-            TerisClass tetrisGame = new TerisClass();
-            tetrisGame.StartTetrisGame();
+            using (DifficultyForm difficultyForm = new DifficultyForm())
+            {
+                if (difficultyForm.ShowDialog() == DialogResult.OK)
+                {
+                    int difficulty = difficultyForm.Difficulty;
+                    using (TetrisForm tetrisForm = new TetrisForm(difficulty))
+                    {
+                        tetrisForm.ShowDialog();
+                    }
+                }
+            }
         }
+
+        static void ShowAuthorInfoForm()
+        {
+            using (AuthorInfoForm authorInfoForm = new AuthorInfoForm())
+            {
+                authorInfoForm.ShowDialog();
+            }
+        }
+
 
         /// <summary>
         /// Отображает меню и получает выбор пользователя.
@@ -61,9 +90,36 @@ namespace Tetris
             Console.WriteLine("1. Отгадай ответ");
             Console.WriteLine("2. Об авторе");
             Console.WriteLine("3. Работа с массивом");
-            Console.WriteLine("4. Игра Тетрис");
-            Console.WriteLine("5. Выход");
+            Console.WriteLine("4. Отгадай ответ (форма)");
+            Console.WriteLine("5. Работа с массивом (форма)");
+            Console.WriteLine("6. Игра Тетрис (форма)");
+            Console.WriteLine("7. Об авторе(форма)");
+            Console.WriteLine("8. Выход");
             return InputValidator.GetIntInput("Введите номер пункта меню: ");
+        }
+
+        /// <summary>
+        /// Отображает форму игры "Отгадай ответ".
+        /// </summary>
+        static void ShowGuessingGameForm()
+        {
+            using (Form1 form = new Form1())
+            {
+                form.ShowDialog();
+            }
+        }
+
+       
+
+        /// <summary>
+        /// Отображает форму для работы с массивами.
+        /// </summary>
+        static void ShowArrayForm()
+        {
+            using (ArrayForm form = new ArrayForm())
+            {
+                form.ShowDialog();
+            }
         }
 
         /// <summary>

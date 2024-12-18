@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace Исходник
 {
@@ -44,6 +45,20 @@ namespace Исходник
                     Console.WriteLine("Введите корректное число.");
                 }
             } while (greaterThanZero && value <= 0);
+            return value;
+        }
+
+        /// <summary>
+        /// Получает значение double из TextBox с проверкой на положительность.
+        /// </summary>
+        public static double GetDoubleFromTextBox(TextBox textBox, bool greaterThanZero = false)
+        {
+            double value;
+            while (!double.TryParse(textBox.Text, out value) || (greaterThanZero && value <= 0))
+            {
+                MessageBox.Show("Введите корректное число.");
+                return 0; // Или выбросьте исключение
+            }
             return value;
         }
     }

@@ -1,7 +1,7 @@
 ﻿using System;
 using Исходник;
 
-namespace Tetris
+namespace Game
 {
     /// <summary>
     /// Статический класс, реализующий игру "Отгадай ответ".

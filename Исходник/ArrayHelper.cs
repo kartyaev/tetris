@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 
 namespace Tetris
 {
@@ -37,6 +38,15 @@ namespace Tetris
             n = size;
             array = new int[n];
             InitializeArray();
+        }
+
+        /// <summary>
+        /// Возвращает массив.
+        /// </summary>
+        /// <returns>Массив целых чисел.</returns>
+        public int[] GetArray()
+        {
+            return array;
         }
 
         /// <summary>
@@ -116,6 +126,15 @@ namespace Tetris
         /// Сортирует массив методом пузырьковой сортировки.
         /// </summary>
         /// <param name="arr">Массив для сортировки.</param>
+        public void SortArray()
+        {
+            BubbleSort(array);
+        }
+
+        /// <summary>
+        /// Сортирует массив методом пузырьковой сортировки.
+        /// </summary>
+        /// <param name="arr">Массив для сортировки.</param>
         private void BubbleSort(int[] arr)
         {
             int length = arr.Length;
@@ -152,5 +171,33 @@ namespace Tetris
                 arr[j + 1] = key;
             }
         }
+
+        /// <summary>
+        /// Находит максимальное значение в массиве.
+        /// </summary>
+        /// <returns>Максимальное значение в массиве.</returns>
+        public int FindMax()
+        {
+            return array.Max();
+        }
+
+        /// <summary>
+        /// Находит минимальное значение в массиве.
+        /// </summary>
+        /// <returns>Минимальное значение в массиве.</returns>
+        public int FindMin()
+        {
+            return array.Min();
+        }
+
+        /// <summary>
+        /// Вычисляет среднее арифметическое значение массива.
+        /// </summary>
+        /// <returns>Среднее арифметическое значение массива.</returns>
+        public double CalculateAverage()
+        {
+            return array.Average();
+        }
     }
 }
+
